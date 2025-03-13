@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { HandMetal } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 
 const HeroSection = () => {
   const [videos , setVideos] = useState("");
   const URI = import.meta.env.VITE_API_URL;
   console.log(videos);
+  
 
   
   useEffect(() => {
@@ -23,6 +26,17 @@ const HeroSection = () => {
   }, []); // Empty dependency array ensures it runs only once
 
   return (
+    <>
+        {/* SEO Helmet */}
+        <Helmet>
+        <title>{videos[0]?.title}</title>
+        <meta name="description" content={videos[0]?.description} />
+        <meta property="og:title" content={videos[0]?.title} />
+        <meta property="og:description" content={videos[0]?.description} />
+        <meta property="og:type" content="video.other" />
+        <meta property="og:url" content={URI} />
+        <meta property="og:image" content={videos ? `${URI}${videos[0]?.videoUrl}` : "/default-thumbnail.jpg"} />
+      </Helmet>
     <div className="relative w-full  h-[100vh] sm:h-[90vh] overflow-hidden">
       {/* Background Video */}
       {videos.length > 0 && videos[0].videoUrl ? (
@@ -92,6 +106,7 @@ const HeroSection = () => {
 </div>
 
     </div>
+    </>
   );
 };
 

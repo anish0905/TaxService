@@ -34,7 +34,7 @@ const Services = () => {
   return (
     < >
     <div className="bg-[#e6fafc]">
-  <h1 className="text-4xl font-bold text-gray-800 text-center"> Services</h1>
+  <h1 className="text-4xl font-bold text-gray-800 text-center mt-3"> Services</h1>
 
     </div>
     <div className="min-h-screen flex flex-wrap gap-4 justify-center items-center p-6 bg-[#e6fafc]">
@@ -56,22 +56,6 @@ const Services = () => {
   );
 };
 
-const DemoPage = () => {
-  return (
-    <div className="min-h-screen flex flex-wrap gap-4 justify-center items-center p-6 bg-gray-100">
-      {[...Array(6)].map((_, index) => (
-        <div key={index} className="bg-white shadow-lg rounded-lg p-4 max-w-xs w-full text-center">
-          <img
-            src={`/image${index + 1}.jpg`}
-            alt={`Demo Image ${index + 1}`}
-            className="w-full h-32 object-cover rounded mb-2"
-          />
-          <h3 className="text-lg font-semibold mb-2">Demo Card {index + 1}</h3>
-          <p className="text-gray-500">This is a demo card with additional details.</p>
-        </div>
-      ))}
-    </div>
-  );
-};
 
-export { Services, DemoPage };
+
+export { Services };

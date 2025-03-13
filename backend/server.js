@@ -11,6 +11,8 @@ const dbConnection = require('./dbConnection/dbConnection');
 const admin = require('./routes/LoginRoutes');
 const videoRoutes = require("./routes/videoRoutes");
 
+const serviceRoutes = require("./routes/services/servicesRoutes");  // Adding service routes here
+
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -23,6 +25,7 @@ app.use(bodyParser.json());
 
 app.use('/api', admin);
 app.use("/api/videos", videoRoutes);
+app.use('/api/services', serviceRoutes); 
 
 
 app.listen(port, () => {
