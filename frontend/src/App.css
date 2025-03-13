@@ -1,0 +1,15 @@
+* {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.sroller {
+  padding-right: 10px;
+  padding-left: 10px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer & Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari, and Edge */
+.sroller::-webkit-scrollbar {
+  display: none;
+}
