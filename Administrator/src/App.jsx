@@ -6,6 +6,7 @@ import Login from "./components/Login/Login";
 import Dashboard from "./pages/Admin/Dashboard";
 import SubAdminDashboard from "./pages/SubAdmin/SubAdminDashboard";
 import HeroSection from "./pages/SubAdmin/ContentEdit/HeroSection";
+import Services from "./pages/SubAdmin/ContentEdit/Services";
 
 // Function to get user role from localStorage
 const getUserRole = () => {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/home-video-edit",
     element: <HeroSection/>,
+  },
+  {
+    path: "/home-services-edit",
+    element: <Services/>,
   },
   {
     path: "*",
