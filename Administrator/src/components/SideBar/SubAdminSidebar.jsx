@@ -71,7 +71,10 @@ const SubAdminSidebar = () => {
                         <MdOndemandVideo className="mr-2" />HeroSection
                       </li>
                       <li onClick={() => handleDropdownSelect('/home-services-edit')} className="dropdown-item flex items-center p-2 cursor-pointer hover:bg-gray-300 rounded">
-                        <MdTextFields className="mr-2" /> Services
+                        <MdTextFields className="mr-2" />Add Services
+                      </li>
+                      <li onClick={() => handleDropdownSelect('/home-services-list')} className="dropdown-item flex items-center p-2 cursor-pointer hover:bg-gray-300 rounded">
+                        <MdTextFields className="mr-2" /> Services List
                       </li>
                       <li onClick={() => handleDropdownSelect('/text-edit')} className="dropdown-item flex items-center p-2 cursor-pointer hover:bg-gray-300 rounded">
                         <MdTextFields className="mr-2" /> Text Editing

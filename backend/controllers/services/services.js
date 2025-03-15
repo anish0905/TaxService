@@ -1,18 +1,37 @@
-const Service = require('../../models/services/service'); // Import the model
+const Service = require("../../models/services/service");
 
-// **Create a new Service**
+// ✅ Create a new service
 const createService = async (req, res) => {
     try {
-        const { name, description, category } = req.body;
-        const newService = new Service({ name, description, category });
+        const { name, description, category} = req.body;
+
+        // Validate required fields
+        if (!name || !category) {
+            return res.status(400).json({ message: "Name and category are required" });
+        }
+
+        // Ensure a file was uploaded
+        if (!req.file) {
+            return res.status(400).json({ message: "Image file is required" });
+        }
+
+        // Create new service entry
+        const newService = new Service({
+            name,
+            description,
+            category,
+            imageUrl: `/uploads/videos/${req.file.filename}`, // Assuming image is stored in 'uploads/images/'
+        });
+
         await newService.save();
         res.status(201).json({ message: "Service created successfully", service: newService });
+
     } catch (error) {
         res.status(500).json({ message: "Error creating service", error: error.message });
     }
 };
 
-// **Get all services**
+// ✅ Fetch all services
 const getAllServices = async (req, res) => {
     try {
         const services = await Service.find();
@@ -22,7 +41,7 @@ const getAllServices = async (req, res) => {
     }
 };
 
-// **Get a single service by ID**
+// ✅ Fetch a single service by ID
 const getServiceById = async (req, res) => {
     try {
         const service = await Service.findById(req.params.id);
@@ -35,15 +54,17 @@ const getServiceById = async (req, res) => {
     }
 };
 
-// **Update a service**
+// ✅ Update a service
 const updateService = async (req, res) => {
     try {
         const { name, description, category } = req.body;
-        const updatedService = await Service.findByIdAndUpdate(
-            req.params.id,
-            { name, description, category, updatedAt: Date.now() },
-            { new: true, runValidators: true }
-        );
+        const updatedData = { name, description, category };
+
+        if (req.file) {
+            updatedData.imageUrl = `/uploads/images/${req.file.filename}`;
+        }
+
+        const updatedService = await Service.findByIdAndUpdate(req.params.id, updatedData, { new: true });
 
         if (!updatedService) {
             return res.status(404).json({ message: "Service not found" });
@@ -55,7 +76,7 @@ const updateService = async (req, res) => {
     }
 };
 
-// **Delete a service**
+// ✅ Delete a service
 const deleteService = async (req, res) => {
     try {
         const deletedService = await Service.findByIdAndDelete(req.params.id);
@@ -75,5 +96,5 @@ module.exports = {
     getAllServices,
     getServiceById,
     updateService,
-    deleteService
+    deleteService,
 };
