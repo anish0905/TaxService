@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import SubAdminSidebar from "../../../components/SideBar/SubAdminSidebar";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 const URI = import.meta.env.VITE_API_URL;
 
 const API_URL = `${URI}/api/services`;
@@ -13,8 +15,8 @@ const Services = () => {
   const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({ name: "", description: "", category: "", imageUrl: null });
   const [editingService, setEditingService] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const navigate = useNavigate();
+
   console.log(services);
 
   useEffect(() => {
@@ -65,6 +67,7 @@ const Services = () => {
       } else {
         await axios.post(API_URL, formDataToSend, { headers: { "Content-Type": "multipart/form-data" } });
         Swal.fire("Added!", "Service added successfully!", "success");
+        navigate("/home-services-list");
       }
       fetchServices();
       setFormData({ name: "", description: "", category: "", imageUrl: null });
@@ -119,10 +122,8 @@ const Services = () => {
     });
   };
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentServices = services.slice(indexOfFirstItem, indexOfLastItem);
-  console.log(currentServices)
+  
+ 
 
   return (
     <div className="flex">
@@ -140,28 +141,8 @@ const Services = () => {
           <input type="file" name="imageUrl" accept="image/*" onChange={handleChange} className="w-full p-2 mb-3 border rounded" />
           <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded w-full">{editingService ? "Update Service" : "Add Service"}</button>
         </form>
-        <div className="mt-6 grid grid-cols-3 gap-4">
-          
-          {currentServices.map((service) => (<div key={service._id} className="bg-white p-4 shadow-lg rounded-lg">{service.name}
-            
-            <p className="text-sm">{service.description}</p>
-            {console.log(`${URI}/${service.imageUrl}`)}
-            <img src={`${URI}${service.imageUrl}`} alt="Service Image" className="w-full h-40 object-cover" />
-            <img src={`${URI}/${service.imageUrl}`} alt="Service" />
-
-
-
-            <div className="flex justify-between">
-              <button onClick={() => setEditingService(service)} className="px-2 py-1 bg-gray-500 text-white rounded">Edit</button>
-              <button onClick={() => handleDelete(service._id)} className="px-2 py-1 bg-red-500 text-white rounded">Delete</button>
-            </div>
-  
-          </div>))}
-        </div>
-        <div className="mt-4 flex justify-center">
-          <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1} className="px-4 py-2 bg-gray-500 text-white rounded">Previous</button>
-          <button onClick={() => setCurrentPage(currentPage + 1)} disabled={indexOfLastItem >= services.length} className="px-4 py-2 bg-gray-500 text-white rounded">Next</button>
-        </div>
+        
+      
       </div>
     </div>
   );

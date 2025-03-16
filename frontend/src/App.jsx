@@ -7,6 +7,7 @@ import Solution from "./pages/Solution";
 import Home from "./pages/Home";
 import Company from "./pages/Company";
 import AppLayout from "./components/Layout/AppLayout"; // Ensure this component is defined
+import SubServices from "./components/Services/SubServices";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
         path: "/Solution",
         element: <Solution />,
       },
+      {
+        path: "/subservices/:serviceId",
+        element: <SubServices />,
+      },
+     
       {
         path: "*",
         element: <h1>Not Found</h1>,

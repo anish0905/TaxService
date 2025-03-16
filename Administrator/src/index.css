@@ -1,1 +1,9 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
+@font-face {
+  font-family: 'swiper-icons';
+  src: url('/path/to/swiper-icons.woff2') format('woff2');
+}
+
+/* Your other styles */
