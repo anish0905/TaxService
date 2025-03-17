@@ -12,19 +12,20 @@ const CollaborationPage = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <h3 className="text-center">Unleash the Potential of</h3>
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Detect Technology & SGT Partnership
-        </h2>
-        <p className="text-lg text-gray-300">
-          SGT Global and Detect Technologies have joined forces to spearhead a
-          paradigm shift in the industrial sector’s approach to security and
-          safety. This groundbreaking partnership brings together SGT Global’s
-          expertise in artificial intelligence (AI) and Detect Technologies’
-          innovative solutions in industrial safety, creating a formidable
-          alliance poised to revolutionize the way businesses safeguard their
-          operations.
-        </p>
+     <h3 className="text-center">Unlock the Power of</h3>
+<h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+  Tax Servicez & Your Tax Solutions
+</h2>
+<p className="text-lg text-gray-300">
+  Tax Servicez is dedicated to empowering tax service providers with 
+  cutting-edge solutions that streamline compliance, enhance accuracy, 
+  and optimize financial planning. Our expertise in tax advisory, 
+  regulatory compliance, and AI-driven automation ensures that tax professionals 
+  can focus on what they do best—serving their clients efficiently.  
+  Partner with Tax Servicez to revolutionize your tax management strategy and 
+  stay ahead in an ever-evolving financial landscape.
+</p>
+
       </motion.div>
 
       {/* Video Section */}
