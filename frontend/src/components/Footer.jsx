@@ -42,9 +42,8 @@ const Footer = () => {
         <div className="text-left space-y-3">
           <img src={img} alt="SGT Global" className="w-32 mb-2" />
           <p className="text-gray-700 max-w-md">
-            SGT Global is your trusted partner in digital transformation,
-            specializing in SAP implementation, Salesforce solutions, and
-            industry-specific digital solutions.
+          TaxServicez is your trusted partner in tax and financial solutions,
+          specializing in tax filing, compliance management, GST solutions, and personalized tax advisory services tailored to meet industry-specific needs. 🚀
           </p>
         </div>
 
@@ -90,7 +89,7 @@ const Footer = () => {
 
       {/* Copyright Section */}
       <div className="text-center text-gray-700 text-sm">
-        &copy; {new Date().getFullYear()} SGT Global. All rights reserved.
+        &copy; {new Date().getFullYear()} Tax servicez. All rights reserved.
       </div>
     </footer>
   );

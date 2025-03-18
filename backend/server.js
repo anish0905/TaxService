@@ -14,7 +14,7 @@ const videoRoutes = require("./routes/videoRoutes");
 const serviceRoutes = require("./routes/services/servicesRoutes");  // Adding service routes here
 const CategoryRoutes = require("./routes/services/categoryRputes"); // Adding service routes here
 const subServiceRoutes = require("./routes/services/subServiceRoutes"); // Adding
-
+const blogRoutes = require("./routes/blogRoutes");
 const app = express();
 const port = process.env.PORT || 5000;
 dbConnection();
@@ -30,7 +30,7 @@ app.use('/api/services', serviceRoutes);
 
 app.use('/api/services/categories', CategoryRoutes);  // Adding category routes here
 app.use('/api/services',  subServiceRoutes); // Adding service routes here
-
+app.use('/api/blogs', blogRoutes);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

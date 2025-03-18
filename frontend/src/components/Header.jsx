@@ -54,7 +54,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-transparent p-2 shadow-2xl shadow-black sticky top-0 z-80">
+    <header className=" p-2 shadow-2xl shadow-black sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
@@ -70,7 +70,7 @@ const Header = () => {
     {typeof dropdownItems[item] === "string" ? (
       <Link
         to={dropdownItems[item]}
-        className="relative text-[#0f3691] hover:text-blue-900 transition text-lg"
+        className="relative text-[#0f3691] hover:text-blue-900 transition text-lg flex items-center gap-2 mt-1"
       >
         {item}
         <span className="absolute left-0 bottom-[-2px] w-full h-[2px] bg-black transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>

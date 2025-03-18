@@ -8,6 +8,8 @@ import SubAdminDashboard from "./pages/SubAdmin/SubAdminDashboard";
 import HeroSection from "./pages/SubAdmin/ContentEdit/HeroSection";
 import Services from "./pages/SubAdmin/ContentEdit/Services";
 import ServiceList from "./pages/SubAdmin/List/ServiceList";
+import BlogForm from "./pages/SubAdmin/Blogs/BlogForm";
+import BlogList from "./pages/SubAdmin/Blogs/BlogList";
 
 // Function to get user role from localStorage
 const getUserRole = () => {
@@ -38,6 +40,16 @@ const router = createBrowserRouter([
     path: "/home-services-list",
     element: <ServiceList/>,
   },
+  {
+    path: "/home-services-blogs-form",
+    element: <BlogForm/>,
+
+  },
+  {
+    path: "/home-services-blogs-list",
+    element: <BlogList/>,
+  }
+  ,
   {
     path: "*",
     element: <h1>Not Found</h1>,

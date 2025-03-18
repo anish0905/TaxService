@@ -182,16 +182,11 @@ const CardGrid = () => {
       {/* Header */}
       <div className="flex flex-col lg:flex-row justify-between items-center text-white my-10 lg:my-16 px-6">
         <div className="text-center lg:text-left">
-          <h1 className="text-3xl lg:text-5xl font-bold mb-4 lg:mb-6">
-            T-Pulse Success Stories
+          <h1 className="text-3xl lg:text-5xl font-bold mb-4 lg:mb-6 max-w-2xl">
+          🌟 Transforming Businesses with Smart Tax Solutions
           </h1>
           <p className="text-lg max-w-2xl mx-auto lg:mx-0">
-            We go beyond digital transformation to create real business impact.
-            We go beyond digital transformation to create real business impact.
-            We go beyond digital transformation to create real business impact.
-            We go beyond digital transformation to create real business impact.
-            We go beyond digital transformation to create real business impact.
-            We go beyond digital transformation to create real business impact.
+          At Tax Servicez, we don’t just offer tax solutions—we empower businesses with seamless digital tax transformations that drive real results. Here are some inspiring success stories from our clients who have benefited from our expertise.
           </p>
         </div>
         <div className="mt-6 lg:mt-0">

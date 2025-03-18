@@ -33,7 +33,7 @@ const SubAdminSidebar = () => {
   const menuItems = [
     { label: 'Dashboard', icon: <FaHouseUser />, route: '/dashboard' },
     { label: 'Content Edit', icon: <GiSkills />, isDropdown: true },
-    { label: 'About Us Edit', icon: <GiSkills />, isAboutDropdown: true },
+    { label: 'Blogs', icon: <GiSkills />, isAboutDropdown: true },
     { label: 'Logout', icon: <FaSignOutAlt />, action: handleLogout },
   ];
 
@@ -97,11 +97,11 @@ const SubAdminSidebar = () => {
                   </li>
                   {isAboutDropdownOpen && (
                     <ul className="dropdown-menu bg-gray-600 rounded-lg ml-6 p-2">
-                      <li onClick={() => handleAboutDropdownSelect('/about1')} className="dropdown-item flex items-center p-2 cursor-pointer hover:bg-gray-300 rounded">
-                        About1
+                      <li onClick={() => handleAboutDropdownSelect('/home-services-blogs-form')} className="dropdown-item flex items-center p-2 cursor-pointer hover:bg-gray-300 rounded">
+                      Blogs Form
                       </li>
-                      <li onClick={() => handleAboutDropdownSelect('/about2')} className="dropdown-item flex items-center p-2 cursor-pointer hover:bg-gray-300 rounded">
-                        About2
+                      <li onClick={() => handleAboutDropdownSelect('/home-services-blogs-list')} className="dropdown-item flex items-center p-2 cursor-pointer hover:bg-gray-300 rounded">
+                      Blogs List
                       </li>
                       <li onClick={() => handleAboutDropdownSelect('/about3')} className="dropdown-item flex items-center p-2 cursor-pointer hover:bg-gray-300 rounded">
                         About3

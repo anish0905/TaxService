@@ -13,7 +13,7 @@ const blogSchema = new mongoose.Schema(
       unique: true,
       lowercase: true,
     },
-    images:{
+    imageUrl:{
         type: String,
         default: '',
        
@@ -30,8 +30,7 @@ const blogSchema = new mongoose.Schema(
 
     },
     author: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      type:String,
       required: true,
     },
     thumbnail: {
