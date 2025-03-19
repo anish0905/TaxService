@@ -43,12 +43,13 @@ const Header = () => {
   const dropdownItems = {
     Home: "/",
     About: "/about",
+    Blogs:"/Blogs",
   
     Services: services.map((service) => ({
       name: service?.name,
       onClick: () => navigate(`/subservices/${service._id}`, { state: { service } }),
     })),
-    Blogs: ["Blog1", "Blog2", "Blog3"],
+   
     Contacts: ["WhatsApp", "Email", "LinkedIn"],
     Resources: ["Resource1", "Resource2", "Resource3"],
   };

@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import SubAdminSidebar from "../../../components/SideBar/SubAdminSidebar";
+import { useNavigate } from "react-router-dom";
 
 const URI = import.meta.env.VITE_API_URL;
 const username = localStorage.getItem("username");
+const getCATEGORY_API = `${URI}/api/services/categories/get`;
+
+
+
 
 const BlogForm = () => {
+
   const [formData, setFormData] = useState({
     title: "",
     content: "",
@@ -16,8 +22,19 @@ const BlogForm = () => {
     image: null,
     isPublished: false,
   });
-
+  const navigate = useNavigate();
+ const [categories, setCategories] = useState([]);
+ console.log(categories);
   const [preview, setPreview] = useState(null);
+
+
+  useEffect(() => {
+    // Fetch categories from an API (replace with your API endpoint)
+    axios.get(getCATEGORY_API)
+      .then((response) => setCategories(response.data))
+      .catch((error) => console.error("Error fetching categories:", error));
+  }, []);
+  
 
   // Handle Input Changes
   const handleChange = (e) => {
@@ -53,6 +70,7 @@ const BlogForm = () => {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
+      navigate("/home-services-blogs-list")
       toast.success("Blog posted successfully!");
 
       // Reset form
@@ -109,14 +127,11 @@ const BlogForm = () => {
             {/* Category */}
             <div>
               <label className="block text-gray-700 font-medium">Category</label>
-              <input
-                type="text"
-                name="category"
-                value={formData.category}
-                onChange={handleChange}
-                className="w-full p-2 border rounded-md"
-                required
-              />
+
+               <select name="category" value={formData.category} onChange={handleChange} className="w-full p-2 mb-3 border rounded" required>
+            <option value="">Select Category</option>
+            {categories.map((cat) => (<option key={cat._id} value={cat.category}>{cat.category}</option>))}
+          </select>
             </div>
 
             {/* Tags */}

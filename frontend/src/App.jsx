@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Company from "./pages/Company";
 import AppLayout from "./components/Layout/AppLayout"; // Ensure this component is defined
 import SubServices from "./components/Services/SubServices";
+import Blogs from "./components/Blogs/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
       {
         path: "/subservices/:serviceId",
         element: <SubServices />,
+      },
+
+      {
+        path: "/Blogs",
+        element: <Blogs/>,
       },
      
       {
