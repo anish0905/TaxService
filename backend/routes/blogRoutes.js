@@ -14,7 +14,7 @@ router.get('/latest', blogController.getLatestBlogs);
 router.get('/category/:category', blogController.getBlogsByCategory);
 
 // Get a single blog post by ID
-router.get('/:id', blogController.getBlogById);
+router.get('/:slug', blogController.getBlogBySlug);
 
 // Update a blog post
 router.put('/:id',upload.single("imageUrl"), blogController.updateBlog);

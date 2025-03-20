@@ -5,32 +5,22 @@ import LatestBlogs from './LatestBlogs';
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
-  const [latestBlogs, setLatestBlogs] = useState([]);
+  
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [latestLoading, setLatestLoading] = useState(false);
+
 
   useEffect(() => {
     fetchBlogs();
-    fetchLatestBlogs();
+   
     fetchCategories();
   }, [selectedCategory, search, page]);
 
 
 
-  const fetchLatestBlogs = async () => {
-    setLatestLoading(true);
-    try {
-      const { data } = await axios.get('http://localhost:5003/api/blogs/latest');
-      setLatestBlogs(data);
-    } catch (error) {
-      console.error('Error fetching latest blogs:', error);
-    }
-    setLatestLoading(false);
-  };
   const fetchCategories = async () => {
     try {
       const response = await axios.get('http://localhost:5003/api/services/categories/get');
