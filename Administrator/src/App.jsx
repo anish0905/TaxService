@@ -10,6 +10,7 @@ import Services from "./pages/SubAdmin/ContentEdit/Services";
 import ServiceList from "./pages/SubAdmin/List/ServiceList";
 import BlogForm from "./pages/SubAdmin/Blogs/BlogForm";
 import BlogList from "./pages/SubAdmin/Blogs/BlogList";
+import ContactUS from "./pages/SubAdmin/ContactUS";
 
 // Function to get user role from localStorage
 const getUserRole = () => {
@@ -50,6 +51,12 @@ const router = createBrowserRouter([
     element: <BlogList/>,
   }
   ,
+  // Catch-all for 404 page
+ 
+  {
+    path: " /contactus-client-details",
+    element: <ContactUS/>,
+  },
   {
     path: "*",
     element: <h1>Not Found</h1>,

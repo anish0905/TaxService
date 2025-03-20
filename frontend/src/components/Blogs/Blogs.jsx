@@ -11,39 +11,41 @@ const Blogs = () => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
-  const limit = 12; // Pagination limit
+  const [totalPages, setTotalPages] = useState(1);
+  const blogsPerPage = 10; // Number of blogs per page
 
   useEffect(() => {
     fetchBlogs();
     fetchCategories();
   }, [selectedCategory, search, page]);
 
-  const fetchCategories = async () => {
-    try {
-      const response = await axios.get(`${URI}/api/services/categories/get`);
-      setCategories(response.data);
-    } catch (error) {
-      console.error("Error fetching categories:", error);
-    }
-  };
-
   const fetchBlogs = async () => {
     setLoading(true);
     try {
-      let url = `${URI}/api/blogs?page=${page}&limit=${limit}&search=${search}`;
+      let url = `${URI}/api/blogs`;
       if (selectedCategory !== "all") {
-        url = `${URI}/api/blogs/category/${selectedCategory}?page=${page}&limit=${limit}&search=${search}`;
+        url = `${URI}/api/blogs/category/${selectedCategory}`;
       }
-
+  
       const { data } = await axios.get(url);
-      setBlogs(data);
-      setHasMore(data.length === limit); // If data length < limit, no more pages exist
+      setBlogs(data || []); // Ensure blogs is never undefined
     } catch (error) {
       console.error("Error fetching blogs:", error);
+      setBlogs([]); // Set empty array on error
     }
     setLoading(false);
   };
+  
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get(`${URI}/api/services/categories/get`);
+      setCategories(response.data || []); // Ensure categories is never undefined
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+      setCategories([]); // Set empty array on error
+    }
+  };
+  
 
   return (
     <div className="container mx-auto p-4">
@@ -80,7 +82,7 @@ const Blogs = () => {
             }`}
             onClick={() => {
               setSelectedCategory(cat.category);
-              setPage(1); // Reset page when category changes
+              setPage(1);
             }}
           >
             {cat.category}
@@ -99,22 +101,21 @@ const Blogs = () => {
               <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-gray-500"></div>
             </div>
           ) : (
-            blogs.map((blog) => (
-              <div key={blog._id} className="border p-4 rounded shadow h-96">
-                <img
-                  src={`${URI}${blog.imageUrl}`}
-                  alt={blog.title}
-                  className="w-full h-40 object-cover mb-2"
-                />
-                <h3 className="text-lg font-bold">{blog.title}</h3>
-                <p className="text-sm">
-                  {blog.content.split(" ").slice(0, 20).join(" ")}...
-                </p>
-                <Link to={`/blogs/${blog.slug}`} className="text-blue-500">
-                  View More
-                </Link>
-              </div>
-            ))
+            blogs?.length > 0 ? (
+              blogs.map((blog) => (
+                <div key={blog._id} className="border p-4 rounded shadow h-96">
+                  <img src={`${URI}${blog.imageUrl}`} alt={blog.title} className="w-full h-40 object-cover mb-2" />
+                  <h3 className="text-lg font-bold">{blog.title}</h3>
+                  <p className="text-sm">
+                    {blog.content?.split(" ").slice(0, 20).join(" ")}...
+                  </p>
+                  <Link to={`/blogs/${blog.slug}`} className="text-blue-500">View More</Link>
+                </div>
+              ))
+            ) : (
+              <p>No blogs available.</p>
+            )
+            
           )}
         </div>
       </div>
@@ -128,11 +129,11 @@ const Blogs = () => {
         >
           Prev
         </button>
-        <span className="px-4">Page {page}</span>
+        <span className="px-4">Page {page} of {totalPages}</span>
         <button
           className="p-2 border rounded"
           onClick={() => setPage(page + 1)}
-          disabled={!hasMore}
+          disabled={page >= totalPages}
         >
           Next
         </button>

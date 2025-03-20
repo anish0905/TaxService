@@ -50,8 +50,23 @@ const Header = () => {
       onClick: () => navigate(`/subservices/${service._id}`, { state: { service } }),
     })),
    
-    Contacts: ["WhatsApp", "Email", "LinkedIn"],
-    Resources: ["Resource1", "Resource2", "Resource3"],
+    Contacts: [
+      {
+        name: "📞 WhatsApp",
+        onClick: () => window.open("https://wa.me/919876543210", "_blank"), // Replace with your number
+      },
+      {
+        name: "📧 Email",
+        onClick: () => window.location.href = "mailto:your-email@example.com", // Replace with your email
+      },
+      {
+        name: "🔗 LinkedIn",
+        onClick: () => window.open("https://www.linkedin.com/in/your-profile", "_blank"), // Replace with your LinkedIn profile
+      },
+    ],
+   
+
+    // Resources: ["Resource1", "Resource2", "Resource3"],
   };
 
   return (
@@ -117,10 +132,10 @@ const Header = () => {
 
         </div>
 
-        {/* Right Side - Contact Us Button */}
+        {/* Right Side - Contact Us Button "https://calendly.com/lance-sgtglobal/t-pulse-safety-management-platform-review?month=2025-02&date=2025-02-24" */}
         <div className="hidden md:flex">
           <Link
-            to="https://calendly.com/lance-sgtglobal/t-pulse-safety-management-platform-review?month=2025-02&date=2025-02-24"
+            to= "/contacts-us"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition rounded-lg text-lg"

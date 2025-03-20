@@ -10,6 +10,7 @@ import AppLayout from "./components/Layout/AppLayout"; // Ensure this component 
 import SubServices from "./components/Services/SubServices";
 import Blogs from "./components/Blogs/Blogs";
 import BlogsDetails from "./components/Blogs/BlogsDetails";
+import ContactUs from "./components/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,11 @@ const router = createBrowserRouter([
       {
         path: "/blogs/:slug",
         element: <BlogsDetails/>,
+      },
+      {
+        path: "/contacts-us",
+        element:<ContactUs/>,
+
       },
       {
         path: "*",

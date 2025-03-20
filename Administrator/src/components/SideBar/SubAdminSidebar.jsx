@@ -34,6 +34,7 @@ const SubAdminSidebar = () => {
     { label: 'Dashboard', icon: <FaHouseUser />, route: '/dashboard' },
     { label: 'Content Edit', icon: <GiSkills />, isDropdown: true },
     { label: 'Blogs', icon: <GiSkills />, isAboutDropdown: true },
+    { label: 'Contact Client', icon: <FaHouseUser />, route: '/contactus-client-details' },
     { label: 'Logout', icon: <FaSignOutAlt />, action: handleLogout },
   ];
 
