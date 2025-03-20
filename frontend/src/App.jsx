@@ -52,7 +52,7 @@ const router = createBrowserRouter([
         element: <BlogsDetails/>,
       },
       {
-        path: "/contacts-us",
+        path: "/contacts",
         element:<ContactUs/>,
 
       },

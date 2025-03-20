@@ -135,8 +135,8 @@ const Header = () => {
         {/* Right Side - Contact Us Button "https://calendly.com/lance-sgtglobal/t-pulse-safety-management-platform-review?month=2025-02&date=2025-02-24" */}
         <div className="hidden md:flex">
           <Link
-            to= "/contacts-us"
-            target="_blank"
+            to= "/contacts"
+           
             rel="noopener noreferrer"
             className="px-6 py-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition rounded-lg text-lg"
           >
@@ -208,8 +208,8 @@ const Header = () => {
 
           {/* Mobile Contact Us Button */}
           <Link
-            to="/contacts-us"
-            target="_blank"
+            to="/contacts"
+           
             rel="noopener noreferrer"
             className="px-6 py-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition rounded-lg text-lg"
           >
