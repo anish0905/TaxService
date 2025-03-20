@@ -4,8 +4,11 @@ import axios from "axios";
 import { FaHeart, FaRegHeart, FaComment } from "react-icons/fa";
 import Swal from "sweetalert2";
 import LatestBlogs from "./LatestBlogs";
+import { HandMetal } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const BlogsDetails = () => {
+    const URI = import.meta.env.VITE_API_URL;
   const { slug } = useParams(); // Get slug from URL params
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -18,7 +21,7 @@ const BlogsDetails = () => {
   const fetchBlogDetails = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get(`http://localhost:5003/api/blogs/${slug}`);
+      const { data } = await axios.get(`${URI}/api/blogs/${slug}`);
       setBlog(data);
     } catch (error) {
       console.error("Error fetching blog details:", error);
@@ -76,16 +79,29 @@ const BlogsDetails = () => {
   }
 
   return (
+    <>
+     { <Helmet>
+            <title>{blog.title}</title>
+            <meta name="content" content={blog.content} />
+            <meta property="og:title" content={blog.title} />
+            <meta property="og:content" content={blog.content} />
+            <meta property="og:type" content="video.other" />
+            <meta property="og:url" content={URI} />
+            {/* <meta property="og:image" content={videos ? `${URI}${videos[0]?.videoUrl}` : "/default-thumbnail.jpg"} /> */}
+          </Helmet>
+          }
+   
+    
     <div className="container mx-auto p-4">
       <div className="lg:flex gap-4">
         {/* Latest Blogs (30%) */}
         <LatestBlogs />
 
         {/* Blog Details (70%) */}
-        <div className="lg:w-3/4 border p-4 rounded shadow">
+        <div className="lg:w-3/4  p-4 rounded shadow">
           <h1 className="text-2xl font-bold mb-2">{blog.title}</h1>
-          <p className="text-gray-500">By {blog.author?.name || "Unknown"}</p>
-          <img src={blog.imageUrl} alt={blog.title} className="w-full h-80 object-cover my-4" />
+          <p className="text-gray-500">By {blog.author || "Unknown"}</p>
+          <img src={`${URI}${blog.imageUrl}`} alt={blog.title} className="w-full h-96 object-fit my-4" />
           <p className="text-gray-700">{blog.content}</p>
 
           {/* Like & Comment Buttons */}
@@ -100,6 +116,7 @@ const BlogsDetails = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

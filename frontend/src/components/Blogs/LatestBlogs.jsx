@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const LatestBlogs = () => {
+    const URI = import.meta.env.VITE_API_URL;
   const [latestBlogs, setLatestBlogs] = useState([]);
   const [latestLoading, setLatestLoading] = useState(false);
 
@@ -10,7 +11,7 @@ const LatestBlogs = () => {
     const fetchLatestBlogs = async () => {
       setLatestLoading(true);
       try {
-        const { data } = await axios.get('http://localhost:5003/api/blogs/latest');
+        const { data } = await axios.get(`${URI}/api/blogs/latest`);
         setLatestBlogs(data);
       } catch (error) {
         console.error('Error fetching latest blogs:', error);
