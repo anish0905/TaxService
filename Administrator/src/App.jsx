@@ -51,10 +51,9 @@ const router = createBrowserRouter([
     element: <BlogList/>,
   }
   ,
-  // Catch-all for 404 page
  
   {
-    path: " /contactus-client-details",
+    path: "/contactus-client-details",
     element: <ContactUS/>,
   },
   {
