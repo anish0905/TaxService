@@ -37,12 +37,47 @@ exports.createBlog = async (req, res) => {
 // Get all blog posts
 exports.getAllBlogs = async (req, res) => {
   try {
-    const blogs = await Blog.find().populate('author', 'name');
+    const blogs = await Blog.find().populate('author', 'name').sort({createdAt: -1});
     res.status(200).json(blogs);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
+//latest 20 blogs
+exports.getLatestBlogs = async (req, res) => {
+  try {
+    const latestBlogs = await Blog.find()
+      .populate('author', 'name')
+      .sort({ createdAt: -1 }) // Latest first
+      .limit(20);
+
+    res.status(200).json(latestBlogs);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Blogs by category
+exports.getBlogsByCategory = async (req, res) => {
+  try {
+    const { category } = req.params; // URL se category le rahe hain
+
+    const blogs = await Blog.find({ category })
+      .populate('author', 'name') // Author ka sirf name fetch hoga
+      .sort({ createdAt: -1 }) // Latest blogs pehle aayenge
+   
+
+    if (!blogs.length) {
+      return res.status(404).json({ message: "No blogs found in this category" });
+    }
+
+    res.status(200).json(blogs);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 
 // Get a single blog post by ID
 exports.getBlogById = async (req, res) => {

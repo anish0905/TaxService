@@ -7,6 +7,11 @@ router.post('/',upload.single("imageUrl"), blogController.createBlog);
 
 // Get all blog posts
 router.get('/', blogController.getAllBlogs);
+router.get('/latest', blogController.getLatestBlogs);
+
+// Get blog posts by category
+
+router.get('/category/:category', blogController.getBlogsByCategory);
 
 // Get a single blog post by ID
 router.get('/:id', blogController.getBlogById);

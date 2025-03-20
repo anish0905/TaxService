@@ -9,6 +9,7 @@ import Company from "./pages/Company";
 import AppLayout from "./components/Layout/AppLayout"; // Ensure this component is defined
 import SubServices from "./components/Services/SubServices";
 import Blogs from "./components/Blogs/Blogs";
+import BlogsDetails from "./components/Blogs/BlogsDetails";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
         element: <Blogs/>,
       },
      
+      {
+        path: "/blogs/:slug",
+        element: <BlogsDetails/>,
+      },
       {
         path: "*",
         element: <h1>Not Found</h1>,
