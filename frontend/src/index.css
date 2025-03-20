@@ -2,3 +2,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 @import "swiper/css";
 @import "swiper/css/pagination";
+
+@keyframes scroll {
+    0% { transform: translateY(0%); }
+    100% { transform: translateY(-50%); }
+  }
+  
+  .animate-scroll {
+    display: flex;
+    flex-direction: column;
+    animation: scroll 30s linear infinite;
+  }
+  
