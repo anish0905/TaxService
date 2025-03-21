@@ -16,6 +16,7 @@ const CategoryRoutes = require("./routes/services/categoryRputes"); // Adding se
 const subServiceRoutes = require("./routes/services/subServiceRoutes"); // Adding
 const blogRoutes = require("./routes/blogRoutes");
 const contactRoutes = require("./routes/contactRoutes");
+const emailContactRoutes = require("./routes/emailContactRoutes");
 const app = express();
 const port = process.env.PORT || 5000;
 dbConnection();
@@ -35,6 +36,7 @@ app.use('/api/blogs', blogRoutes);
 
 app.use('/api/contact', contactRoutes);  // Adding contact routes here
 
+app.use('/api/contact/email', emailContactRoutes);  // Adding email contact routes here
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

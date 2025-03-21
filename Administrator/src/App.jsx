@@ -11,6 +11,7 @@ import ServiceList from "./pages/SubAdmin/List/ServiceList";
 import BlogForm from "./pages/SubAdmin/Blogs/BlogForm";
 import BlogList from "./pages/SubAdmin/Blogs/BlogList";
 import ContactUS from "./pages/SubAdmin/ContactUS";
+import ClientEmail from "./pages/SubAdmin/ClientEmail";
 
 // Function to get user role from localStorage
 const getUserRole = () => {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
   {
     path: "/contactus-client-details",
     element: <ContactUS/>,
+  },
+  {
+    path: "/email-client-details",
+    element: <ClientEmail/>,
   },
   {
     path: "*",
